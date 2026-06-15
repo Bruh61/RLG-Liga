@@ -1,0 +1,149 @@
+.bracket__season {
+  width: min(320px, 100%);
+  margin-bottom: 1.5rem;
+}
+
+.bracket {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2.5rem;
+  align-items: flex-start;
+}
+
+.bracket__subtitle {
+  margin: 0;
+  font: var(--mat-sys-title-medium);
+}
+
+.bracket__hint {
+  margin: 0.25rem 0 0.75rem;
+  color: var(--mat-sys-on-surface-variant);
+  font: var(--mat-sys-body-small);
+}
+
+.bracket__seed-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  width: 260px;
+}
+
+.bracket__seed {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.5rem 0.75rem;
+  border: 1px solid var(--mat-sys-outline-variant);
+  border-radius: 10px;
+  background: var(--mat-sys-surface-container);
+  cursor: grab;
+}
+
+.bracket__seed-num {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.5rem;
+  height: 1.5rem;
+  border-radius: 50%;
+  background: var(--mat-sys-primary);
+  color: var(--mat-sys-on-primary);
+  font: var(--mat-sys-label-small);
+  font-weight: 700;
+}
+
+.bracket__handle {
+  margin-left: auto;
+  color: var(--mat-sys-on-surface-variant);
+}
+
+.bracket__tree {
+  display: flex;
+  gap: 2.5rem;
+  align-items: center;
+}
+
+.bracket__round {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.bracket__round-title {
+  margin: 0;
+  font: var(--mat-sys-title-small);
+  color: var(--mat-sys-on-surface-variant);
+}
+
+.bracket__match {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  border: 1px solid var(--mat-sys-outline-variant);
+  border-radius: 10px;
+  padding: 0.4rem;
+  background: var(--mat-sys-surface-container-low);
+}
+
+.bracket__slot {
+  display: flex;
+  align-items: center;
+  min-width: 220px;
+  padding: 0.5rem 0.75rem;
+  border: none;
+  border-radius: 6px;
+  background: transparent;
+  color: inherit;
+  text-align: left;
+  cursor: pointer;
+  font: inherit;
+}
+
+.bracket__slot:hover:not(:disabled) {
+  background: var(--mat-sys-surface-container-highest);
+}
+
+.bracket__slot:disabled {
+  cursor: default;
+}
+
+.bracket__slot--winner {
+  background: color-mix(in srgb, var(--mat-sys-primary) 18%, transparent);
+  outline: 1px solid var(--mat-sys-primary);
+}
+
+.bracket__tbd {
+  color: var(--mat-sys-on-surface-variant);
+}
+
+.bracket__champion {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 2rem;
+  padding: 0.75rem 1.25rem;
+  border-radius: 12px;
+  background: color-mix(in srgb, var(--mat-sys-tertiary) 20%, transparent);
+  color: var(--mat-sys-tertiary);
+  font: var(--mat-sys-title-medium);
+}
+
+// CDK drag & drop feedback.
+.cdk-drag-preview {
+  border-radius: 10px;
+  box-shadow:
+    0 5px 5px -3px rgba(0, 0, 0, 0.2),
+    0 8px 10px 1px rgba(0, 0, 0, 0.14);
+}
+
+.cdk-drag-placeholder {
+  opacity: 0.35;
+}
+
+.cdk-drag-animating {
+  transition: transform 200ms cubic-bezier(0, 0, 0.2, 1);
+}
+
+.bracket__seed-list.cdk-drop-list-dragging .bracket__seed:not(.cdk-drag-placeholder) {
+  transition: transform 200ms cubic-bezier(0, 0, 0.2, 1);
+}

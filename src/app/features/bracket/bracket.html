@@ -1,0 +1,94 @@
+<app-page-header title="Playoffs" subtitle="Seeding per Drag & Drop, Sieger ziehen ins Finale" />
+
+@if (seasons.value().length === 0) {
+  <app-empty-state icon="calendar_month" message="Lege zuerst eine Saison an." />
+} @else {
+  <mat-form-field appearance="outline" subscriptSizing="dynamic" class="bracket__season">
+    <mat-label>Saison</mat-label>
+    <mat-select [value]="selectedSeasonId()" (selectionChange)="selectSeason($event.value)">
+      @for (season of seasons.value(); track season.id) {
+        <mat-option [value]="season.id">{{ season.name }}</mat-option>
+      }
+    </mat-select>
+  </mat-form-field>
+
+  @if (seeds().length < 4) {
+    <app-empty-state
+      icon="account_tree"
+      message="Für ein Playoff-Bracket werden mindestens 4 Teams benötigt."
+    />
+  } @else {
+    <div class="bracket">
+      <section class="bracket__seeds" aria-label="Seeding">
+        <h2 class="bracket__subtitle">Seeding</h2>
+        <p class="bracket__hint">Ziehe die Teams, um die Setzliste zu ändern.</p>
+        <div cdkDropList class="bracket__seed-list" (cdkDropListDropped)="drop($event)">
+          @for (seedId of seeds(); track seedId; let i = $index) {
+            <div class="bracket__seed" cdkDrag>
+              <span class="bracket__seed-num">{{ i + 1 }}</span>
+              @if (teamFor(seedId); as team) {
+                <app-team-badge [team]="team" [showName]="true" />
+              }
+              <mat-icon class="bracket__handle" cdkDragHandle>drag_indicator</mat-icon>
+            </div>
+          }
+        </div>
+      </section>
+
+      <section class="bracket__tree" aria-label="Bracket">
+        <div class="bracket__round">
+          <h3 class="bracket__round-title">Halbfinale</h3>
+          @for (sf of semifinals(); track sf.key) {
+            <div class="bracket__match">
+              @for (teamId of [sf.a, sf.b]; track $index) {
+                <button
+                  type="button"
+                  class="bracket__slot"
+                  [class.bracket__slot--winner]="winners()[sf.key] === teamId"
+                  [disabled]="!teamId"
+                  (click)="advanceSemi(sf.key, teamId)"
+                >
+                  @if (teamFor(teamId); as team) {
+                    <app-team-badge [team]="team" [showName]="true" />
+                  } @else {
+                    <span class="bracket__tbd">—</span>
+                  }
+                </button>
+              }
+            </div>
+          }
+        </div>
+
+        <div class="bracket__round">
+          <h3 class="bracket__round-title">Finale</h3>
+          <div class="bracket__match">
+            @for (teamId of [finalMatch().a, finalMatch().b]; track $index; let i = $index) {
+              <button
+                type="button"
+                class="bracket__slot"
+                [class.bracket__slot--winner]="champion() === teamId"
+                [disabled]="!teamId"
+                (click)="advanceFinal(teamId)"
+              >
+                @if (teamFor(teamId); as team) {
+                  <app-team-badge [team]="team" [showName]="true" />
+                } @else {
+                  <span class="bracket__tbd">Sieger HF {{ i + 1 }}</span>
+                }
+              </button>
+            }
+          </div>
+        </div>
+      </section>
+    </div>
+
+    @if (teamFor(champion()); as team) {
+      <div class="bracket__champion">
+        <mat-icon>emoji_events</mat-icon>
+        <span
+          >Champion: <strong>{{ team.name }}</strong></span
+        >
+      </div>
+    }
+  }
+}

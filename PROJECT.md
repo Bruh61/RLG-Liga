@@ -2,7 +2,7 @@
 
 > Professionelle Web-App zum Verwalten einer Rocket-League-Liga — Teams, Spieler, Saisons, Matches, Tabelle, Playoff-Bracket und Dashboard. Gebaut mit modernem Angular 22.
 
-**Status:** 🟡 In Entwicklung · **Aktuelle Phase:** Phase 6 — Playoff-Bracket _(Phase 0–5 ✅ abgeschlossen)_
+**Status:** 🟡 In Entwicklung · **Aktuelle Phase:** Phase 7 — Dashboard, Auth & Politur _(Phase 0–6 ✅ abgeschlossen)_
 **Letztes Update:** 2026-06-15
 
 > 📌 **Diese Datei ist die lebende Doku des Projekts.** Sie wird nach jeder Build-Phase aktualisiert (Status, Roadmap-Checkboxen, Changelog). Wenn Code und Doku auseinanderlaufen, ist das ein Bug — beides synchron halten.
@@ -92,7 +92,7 @@ db.json        json-server Seed
 - [x] **Phase 3 — Spieler:** CRUD, Team-Zuordnung, Captain-Regel, Filter nach Team/Plattform.
 - [x] **Phase 4 — Saisons & Match-Planung:** Saisons-CRUD, Match-Schedule mit Signal Form.
 - [x] **Phase 5 — Ergebnisse & Tabelle:** Ergebnis-Dialog, `computed`-Standings, hervorgehobene Playoff-Plätze.
-- [ ] **Phase 6 — Playoff-Bracket:** CDK Drag & Drop Seeding, Vorrücken der Gewinner.
+- [x] **Phase 6 — Playoff-Bracket:** CDK Drag & Drop Seeding, Vorrücken der Gewinner.
 - [ ] **Phase 7 — Dashboard, Auth & Politur:** Kennzahlen + Charts (`@defer`), Auth-Flow (Guard/Interceptor), a11y, Empty-/Error-States.
 
 ---
@@ -134,6 +134,12 @@ Die API-Basis-URL liegt in `src/environments` (`http://localhost:3000`).
 ## 8. Changelog
 
 > Neueste Einträge oben. Pro abgeschlossener Phase ein datierter Eintrag.
+
+### 2026-06-15 — Phase 6: Playoff-Bracket ✅
+
+- **`bracket`**: Single-Elimination-Baum (Top 4). **Seeding per CDK Drag & Drop** (`cdkDropList` + `moveItemInArray`) ordnet die Setzliste; Seeds kommen aus der Tabelle (Fallback: erste 4 Teams).
+- Matchups abgeleitet (`computed`): HF 1v4 / 2v3, Finale aus den HF-Siegern; **Gewinner per Klick** rücken ins Finale vor, Champion wird hervorgehoben. Reset bei Reseed/Saisonwechsel.
+- **20 Tests** inkl. Seeding-Paarung (1v4 / 2v3) und Vorrücken der Sieger. Build/Lint grün.
 
 ### 2026-06-15 — Phase 5: Ergebnisse & Tabelle ✅
 
