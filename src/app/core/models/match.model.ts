@@ -19,3 +19,11 @@ export interface Match {
   /** Playoff round (1 = first round); only set for `stage: 'playoff'`. */
   round?: number;
 }
+
+/** The editable shape of a match (everything except the server-owned id). */
+export type MatchInput = Omit<Match, 'id'>;
+
+/** Games a team must win to take a best-of series. */
+export function gamesToWin(bestOf: BestOf): number {
+  return Math.ceil(bestOf / 2);
+}

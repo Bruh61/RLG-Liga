@@ -2,7 +2,7 @@
 
 > Professionelle Web-App zum Verwalten einer Rocket-League-Liga — Teams, Spieler, Saisons, Matches, Tabelle, Playoff-Bracket und Dashboard. Gebaut mit modernem Angular 22.
 
-**Status:** 🟡 In Entwicklung · **Aktuelle Phase:** Phase 4 — Saisons & Match-Planung _(Phase 0–3 ✅ abgeschlossen)_
+**Status:** 🟡 In Entwicklung · **Aktuelle Phase:** Phase 5 — Ergebnisse & Tabelle _(Phase 0–4 ✅ abgeschlossen)_
 **Letztes Update:** 2026-06-15
 
 > 📌 **Diese Datei ist die lebende Doku des Projekts.** Sie wird nach jeder Build-Phase aktualisiert (Status, Roadmap-Checkboxen, Changelog). Wenn Code und Doku auseinanderlaufen, ist das ein Bug — beides synchron halten.
@@ -90,7 +90,7 @@ db.json        json-server Seed
 - [x] **Phase 1 — Layout & M3-Theme:** Shell (sidenav + toolbar), Lazy-Routen, Custom RLG-Theme (rot/schwarz, Dark Default).
 - [x] **Phase 2 — Teams:** CRUD-Blaupause; `mat-table` (Sort/Filter/Pagination), Signal Form im Dialog, confirm-dialog, team-badge.
 - [x] **Phase 3 — Spieler:** CRUD, Team-Zuordnung, Captain-Regel, Filter nach Team/Plattform.
-- [ ] **Phase 4 — Saisons & Match-Planung:** Saisons-CRUD, Match-Schedule mit Signal Form.
+- [x] **Phase 4 — Saisons & Match-Planung:** Saisons-CRUD, Match-Schedule mit Signal Form.
 - [ ] **Phase 5 — Ergebnisse & Tabelle:** Ergebnis-Dialog, `computed`-Standings, hervorgehobene Playoff-Plätze.
 - [ ] **Phase 6 — Playoff-Bracket:** CDK Drag & Drop Seeding, Vorrücken der Gewinner.
 - [ ] **Phase 7 — Dashboard, Auth & Politur:** Kennzahlen + Charts (`@defer`), Auth-Flow (Guard/Interceptor), a11y, Empty-/Error-States.
@@ -134,6 +134,14 @@ Die API-Basis-URL liegt in `src/environments` (`http://localhost:3000`).
 ## 8. Changelog
 
 > Neueste Einträge oben. Pro abgeschlossener Phase ein datierter Eintrag.
+
+### 2026-06-15 — Phase 4: Saisons & Match-Planung ✅
+
+- **`seasons.service`** (httpResource + CRUD + `byId` + `activeSeason`-`computed`) und **`seasons-list`** (Tabelle mit Status-Chip, Format, Aktionen, Link zu Matches).
+- **`season-form`** (Signal Forms, Inline-Template): Name/Daten required, Status/Format-Selects, `validate` für _Ende ≥ Beginn_.
+- **`matches.service`** (httpResource + CRUD) und **`match-schedule`**: Saison-Selector (`linkedSignal`, Default = aktive Saison), nach Termin sortierte Match-Tabelle mit Team-Badges, Ergebnis-Spalte, Status.
+- **`match-form`** (Signal Forms): Heim/Auswärts-Selects, Termin (`datetime-local`), Best-of & Phase; `validate` erzwingt **Heim ≠ Auswärts**; neue Matches starten als `scheduled` 0:0.
+- Shared **`firstError`**-Helper (`shared/forms`) für konsistente Fehleranzeige. **15 Tests** (Seasons/Matches-Service); Build/Lint grün.
 
 ### 2026-06-15 — Phase 3: Spieler ✅
 

@@ -1,0 +1,41 @@
+.seasons__center {
+  display: flex;
+  justify-content: center;
+  padding: 3rem;
+}
+
+.seasons__table-wrap {
+  border: 1px solid var(--mat-sys-outline-variant);
+  border-radius: 12px;
+  overflow: hidden;
+  background: var(--mat-sys-surface-container-low);
+}
+
+table {
+  width: 100%;
+}
+
+.seasons__status {
+  display: inline-block;
+  padding: 0.1rem 0.6rem;
+  border-radius: 999px;
+  font: var(--mat-sys-label-small);
+  font-weight: 600;
+  background: var(--mat-sys-surface-variant);
+  color: var(--mat-sys-on-surface-variant);
+}
+
+.seasons__status[data-status='active'] {
+  background: color-mix(in srgb, var(--mat-sys-primary) 22%, transparent);
+  color: var(--mat-sys-primary);
+}
+
+.seasons__status[data-status='finished'] {
+  background: color-mix(in srgb, var(--mat-sys-tertiary) 20%, transparent);
+  color: var(--mat-sys-tertiary);
+}
+
+.seasons__actions {
+  text-align: right;
+  white-space: nowrap;
+}
