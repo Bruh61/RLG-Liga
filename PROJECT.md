@@ -2,7 +2,7 @@
 
 > Professionelle Web-App zum Verwalten einer Rocket-League-Liga — Teams, Spieler, Saisons, Matches, Tabelle, Playoff-Bracket und Dashboard. Gebaut mit modernem Angular 22.
 
-**Status:** 🟡 In Entwicklung · **Aktuelle Phase:** Phase 5 — Ergebnisse & Tabelle _(Phase 0–4 ✅ abgeschlossen)_
+**Status:** 🟡 In Entwicklung · **Aktuelle Phase:** Phase 6 — Playoff-Bracket _(Phase 0–5 ✅ abgeschlossen)_
 **Letztes Update:** 2026-06-15
 
 > 📌 **Diese Datei ist die lebende Doku des Projekts.** Sie wird nach jeder Build-Phase aktualisiert (Status, Roadmap-Checkboxen, Changelog). Wenn Code und Doku auseinanderlaufen, ist das ein Bug — beides synchron halten.
@@ -91,7 +91,7 @@ db.json        json-server Seed
 - [x] **Phase 2 — Teams:** CRUD-Blaupause; `mat-table` (Sort/Filter/Pagination), Signal Form im Dialog, confirm-dialog, team-badge.
 - [x] **Phase 3 — Spieler:** CRUD, Team-Zuordnung, Captain-Regel, Filter nach Team/Plattform.
 - [x] **Phase 4 — Saisons & Match-Planung:** Saisons-CRUD, Match-Schedule mit Signal Form.
-- [ ] **Phase 5 — Ergebnisse & Tabelle:** Ergebnis-Dialog, `computed`-Standings, hervorgehobene Playoff-Plätze.
+- [x] **Phase 5 — Ergebnisse & Tabelle:** Ergebnis-Dialog, `computed`-Standings, hervorgehobene Playoff-Plätze.
 - [ ] **Phase 6 — Playoff-Bracket:** CDK Drag & Drop Seeding, Vorrücken der Gewinner.
 - [ ] **Phase 7 — Dashboard, Auth & Politur:** Kennzahlen + Charts (`@defer`), Auth-Flow (Guard/Interceptor), a11y, Empty-/Error-States.
 
@@ -134,6 +134,13 @@ Die API-Basis-URL liegt in `src/environments` (`http://localhost:3000`).
 ## 8. Changelog
 
 > Neueste Einträge oben. Pro abgeschlossener Phase ein datierter Eintrag.
+
+### 2026-06-15 — Phase 5: Ergebnisse & Tabelle ✅
+
+- **`match-result-dialog`** (Signal Forms): Serien-Ergebnis erfassen mit Validierung gegen das Best-of-Format (Sieger braucht genau `ceil(bestOf/2)` Spiele, kein Unentschieden); setzt Status → `finished`. In `match-schedule` als Aktion „Ergebnis eintragen" verdrahtet.
+- **`standings.service`** mit **purer `computeStandings()`**-Funktion (3 Pkt/Sieg, Sortierung Punkte → Game-Differenz → gewonnene Spiele) und reaktivem `forSeason()`-`computed` über die Matches-Resource → **Tabelle aktualisiert sich live** nach Ergebniseingabe.
+- **`standings`**-Seite: Saison-Selector, `mat-table` mit Rang/Team-Badge/Bilanz/Punkten, **Playoff-Plätze (Top 4) hervorgehoben** + Legende.
+- **19 Tests** inkl. der Standings-Berechnung und der Best-of-Validierung. Build/Lint grün.
 
 ### 2026-06-15 — Phase 4: Saisons & Match-Planung ✅
 

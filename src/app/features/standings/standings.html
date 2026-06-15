@@ -1,0 +1,87 @@
+<app-page-header title="Tabelle" subtitle="Live berechnet aus den Match-Ergebnissen" />
+
+@if (matches.isLoading() || seasons.isLoading()) {
+  <div class="standings__center"><mat-spinner diameter="40" /></div>
+} @else if (matches.error()) {
+  <app-empty-state
+    icon="cloud_off"
+    message="Daten konnten nicht geladen werden. Läuft die Mock-API (npm run api)?"
+  />
+} @else if (seasons.value().length === 0) {
+  <app-empty-state icon="calendar_month" message="Lege zuerst eine Saison an." />
+} @else {
+  <mat-form-field appearance="outline" subscriptSizing="dynamic" class="standings__season">
+    <mat-label>Saison</mat-label>
+    <mat-select [value]="selectedSeasonId()" (selectionChange)="selectedSeasonId.set($event.value)">
+      @for (season of seasons.value(); track season.id) {
+        <mat-option [value]="season.id">{{ season.name }}</mat-option>
+      }
+    </mat-select>
+  </mat-form-field>
+
+  @if (rankedRows().length === 0) {
+    <app-empty-state
+      icon="leaderboard"
+      message="Noch keine Ergebnisse in dieser Saison. Trage Match-Ergebnisse ein."
+    />
+  } @else {
+    <div class="standings__table-wrap">
+      <table mat-table [dataSource]="rankedRows()">
+        <ng-container matColumnDef="rank">
+          <th mat-header-cell *matHeaderCellDef>#</th>
+          <td mat-cell *matCellDef="let item" class="standings__rank">{{ item.rank }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="team">
+          <th mat-header-cell *matHeaderCellDef>Team</th>
+          <td mat-cell *matCellDef="let item">
+            @if (teamFor(item.row.teamId); as team) {
+              <app-team-badge [team]="team" [showName]="true" />
+            }
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="played">
+          <th mat-header-cell *matHeaderCellDef class="standings__num">Sp</th>
+          <td mat-cell *matCellDef="let item" class="standings__num">{{ item.row.played }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="wins">
+          <th mat-header-cell *matHeaderCellDef class="standings__num">S</th>
+          <td mat-cell *matCellDef="let item" class="standings__num">{{ item.row.wins }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="losses">
+          <th mat-header-cell *matHeaderCellDef class="standings__num">N</th>
+          <td mat-cell *matCellDef="let item" class="standings__num">{{ item.row.losses }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="gameDiff">
+          <th mat-header-cell *matHeaderCellDef class="standings__num">Diff</th>
+          <td mat-cell *matCellDef="let item" class="standings__num">
+            {{ item.row.gameDiff > 0 ? '+' : '' }}{{ item.row.gameDiff }}
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="points">
+          <th mat-header-cell *matHeaderCellDef class="standings__num">Pkt</th>
+          <td mat-cell *matCellDef="let item" class="standings__num standings__points">
+            {{ item.row.points }}
+          </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr
+          mat-row
+          *matRowDef="let item; columns: displayedColumns"
+          [class.standings__playoff]="item.playoff"
+        ></tr>
+      </table>
+    </div>
+
+    <p class="standings__legend">
+      <span class="standings__legend-mark"></span>
+      Playoff-Plätze (Top {{ playoffSpots }})
+    </p>
+  }
+}

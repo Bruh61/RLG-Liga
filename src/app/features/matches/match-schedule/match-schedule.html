@@ -81,6 +81,14 @@
           <td mat-cell *matCellDef="let match" class="schedule__actions">
             <button
               mat-icon-button
+              (click)="openResult(match)"
+              matTooltip="Ergebnis eintragen"
+              aria-label="Ergebnis eintragen"
+            >
+              <mat-icon>scoreboard</mat-icon>
+            </button>
+            <button
+              mat-icon-button
               (click)="openEdit(match)"
               matTooltip="Bearbeiten"
               aria-label="Match bearbeiten"

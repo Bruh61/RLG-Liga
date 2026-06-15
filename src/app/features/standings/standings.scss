@@ -1,0 +1,58 @@
+.standings__center {
+  display: flex;
+  justify-content: center;
+  padding: 3rem;
+}
+
+.standings__season {
+  width: min(320px, 100%);
+  margin-bottom: 1rem;
+}
+
+.standings__table-wrap {
+  border: 1px solid var(--mat-sys-outline-variant);
+  border-radius: 12px;
+  overflow: hidden;
+  background: var(--mat-sys-surface-container-low);
+}
+
+table {
+  width: 100%;
+}
+
+.standings__rank {
+  width: 2.5rem;
+  font-weight: 600;
+  color: var(--mat-sys-on-surface-variant);
+}
+
+.standings__num {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+.standings__points {
+  font-weight: 700;
+}
+
+// Highlight playoff spots with a left accent bar in the brand color.
+.standings__playoff td:first-child {
+  box-shadow: inset 3px 0 0 0 var(--mat-sys-primary);
+}
+
+.standings__legend {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 0.75rem;
+  color: var(--mat-sys-on-surface-variant);
+  font: var(--mat-sys-body-small);
+}
+
+.standings__legend-mark {
+  display: inline-block;
+  width: 3px;
+  height: 1rem;
+  border-radius: 2px;
+  background: var(--mat-sys-primary);
+}

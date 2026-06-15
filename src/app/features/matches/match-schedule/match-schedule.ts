@@ -21,6 +21,10 @@ import { MatchesService } from '../matches.service';
 import { SeasonsService } from '../../seasons/seasons.service';
 import { TeamsService } from '../../teams/teams.service';
 import { MatchForm, MatchFormData } from '../match-form/match-form';
+import {
+  MatchResultDialog,
+  MatchResultDialogData,
+} from '../match-result-dialog/match-result-dialog';
 
 const STATUS_LABELS: Record<MatchStatus, string> = {
   scheduled: 'Geplant',
@@ -101,6 +105,13 @@ export class MatchSchedule {
   protected openEdit(match: Match): void {
     this.dialog.open(MatchForm, {
       data: { seasonId: match.seasonId, match } satisfies MatchFormData,
+      autoFocus: 'first-tabbable',
+    });
+  }
+
+  protected openResult(match: Match): void {
+    this.dialog.open(MatchResultDialog, {
+      data: { match } satisfies MatchResultDialogData,
       autoFocus: 'first-tabbable',
     });
   }
