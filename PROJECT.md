@@ -2,7 +2,7 @@
 
 > Professionelle Web-App zum Verwalten einer Rocket-League-Liga — Teams, Spieler, Saisons, Matches, Tabelle, Playoff-Bracket und Dashboard. Gebaut mit modernem Angular 22.
 
-**Status:** 🟡 In Entwicklung · **Aktuelle Phase:** Phase 2 — Teams _(Phase 0–1 ✅ abgeschlossen)_
+**Status:** 🟡 In Entwicklung · **Aktuelle Phase:** Phase 3 — Spieler _(Phase 0–2 ✅ abgeschlossen)_
 **Letztes Update:** 2026-06-15
 
 > 📌 **Diese Datei ist die lebende Doku des Projekts.** Sie wird nach jeder Build-Phase aktualisiert (Status, Roadmap-Checkboxen, Changelog). Wenn Code und Doku auseinanderlaufen, ist das ein Bug — beides synchron halten.
@@ -88,7 +88,7 @@ db.json        json-server Seed
 
 - [x] **Phase 0 — Setup & Fundament:** Projekt, Material/CDK, ESLint/Prettier/Vitest, json-server + Seed, `app.config`.
 - [x] **Phase 1 — Layout & M3-Theme:** Shell (sidenav + toolbar), Lazy-Routen, Custom RLG-Theme (rot/schwarz, Dark Default).
-- [ ] **Phase 2 — Teams:** CRUD-Blaupause; `mat-table` (Sort/Filter/Pagination), Signal Form im Dialog, confirm-dialog, team-badge.
+- [x] **Phase 2 — Teams:** CRUD-Blaupause; `mat-table` (Sort/Filter/Pagination), Signal Form im Dialog, confirm-dialog, team-badge.
 - [ ] **Phase 3 — Spieler:** CRUD, Team-Zuordnung, Captain-Regel, Filter nach Team/Plattform.
 - [ ] **Phase 4 — Saisons & Match-Planung:** Saisons-CRUD, Match-Schedule mit Signal Form.
 - [ ] **Phase 5 — Ergebnisse & Tabelle:** Ergebnis-Dialog, `computed`-Standings, hervorgehobene Playoff-Plätze.
@@ -134,6 +134,14 @@ Die API-Basis-URL liegt in `src/environments` (`http://localhost:3000`).
 ## 8. Changelog
 
 > Neueste Einträge oben. Pro abgeschlossener Phase ein datierter Eintrag.
+
+### 2026-06-15 — Phase 2: Teams (CRUD-Blaupause) ✅
+
+- **`teams.service`** als Domänen-Service: `httpResource` für den reaktiven Read (`teams`, `isLoading`, `error`, abgeleitete `byId`-Map), Mutationen (`create`/`update`/`remove`) via `HttpClient` + `.reload()`; Ids werden client-seitig erzeugt (`crypto.randomUUID()`), backend-unabhängig.
+- **`teams-list`** (Smart-Container): `mat-table` mit `matSort`, Textfilter (eigene `filterPredicate` auf Name/Tag) und `mat-paginator`; Lade-/Leer-/Fehlerzustände; Aktionen Bearbeiten/Löschen.
+- **`team-form`** Dialog mit **Signal Forms** (`@angular/forms/signals`): `form()` + Validatoren (`required`, `maxLength`), Bindung über `[formField]`, Fehler-Anzeige manuell aus dem Field-State (Material hat keine NgControl-Bridge), `submit()` ruft create/update; Create + Edit teilen den Dialog.
+- **Shared**: generischer `confirm-dialog` (Löschbestätigung) und `team-badge` (Tag-Chip mit Team-Farbe + berechneter Kontrast-Textfarbe).
+- **Tests (9 gesamt):** Service (id-Generierung/POST, PUT/DELETE), Signal-Form-Validierung, und ein Render-Test der Tabelle (httpResource → effect → Rows). Build/Lint grün; Initial-Budget auf 800kB/1.5MB angehoben (Material-SPA).
 
 ### 2026-06-15 — Phase 1: Layout & M3-Theme ✅
 

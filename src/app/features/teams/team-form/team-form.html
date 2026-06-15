@@ -1,0 +1,53 @@
+<h2 mat-dialog-title>{{ title }}</h2>
+
+<form (submit)="$event.preventDefault(); save()">
+  <mat-dialog-content class="team-form">
+    <mat-form-field appearance="outline">
+      <mat-label>Name</mat-label>
+      <input matInput [formField]="form.name" autocomplete="off" />
+      @if (firstError(form.name()); as err) {
+        <mat-hint class="team-form__error" role="alert">{{ err }}</mat-hint>
+      }
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Tag</mat-label>
+      <input matInput [formField]="form.tag" autocomplete="off" />
+      <mat-hint align="end">max. 5 Zeichen</mat-hint>
+      @if (firstError(form.tag()); as err) {
+        <mat-hint class="team-form__error" role="alert">{{ err }}</mat-hint>
+      }
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Gegründet am</mat-label>
+      <input matInput type="date" [formField]="form.foundedAt" />
+      @if (firstError(form.foundedAt()); as err) {
+        <mat-hint class="team-form__error" role="alert">{{ err }}</mat-hint>
+      }
+    </mat-form-field>
+
+    <label class="team-form__color">
+      <span class="team-form__color-label">Teamfarbe</span>
+      <input
+        #colorInput
+        type="color"
+        [value]="model().colorPrimary"
+        (input)="setColor(colorInput.value)"
+        aria-label="Teamfarbe"
+      />
+      <code class="team-form__color-value">{{ model().colorPrimary }}</code>
+    </label>
+
+    @if (saveError(); as err) {
+      <p class="team-form__save-error" role="alert">{{ err }}</p>
+    }
+  </mat-dialog-content>
+
+  <mat-dialog-actions align="end">
+    <button mat-button type="button" [mat-dialog-close]="false">Abbrechen</button>
+    <button mat-flat-button type="submit" [disabled]="form().invalid() || saving()">
+      {{ isEdit ? 'Speichern' : 'Anlegen' }}
+    </button>
+  </mat-dialog-actions>
+</form>

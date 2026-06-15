@@ -10,3 +10,6 @@ export interface Team {
   /** ISO date (yyyy-MM-dd). */
   foundedAt: string;
 }
+
+/** The editable shape of a team (everything except the server-owned id). */
+export type TeamInput = Omit<Team, 'id'>;

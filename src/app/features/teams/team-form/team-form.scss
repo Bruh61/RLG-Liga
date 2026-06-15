@@ -1,0 +1,43 @@
+.team-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  min-width: min(420px, 78vw);
+  padding-top: 0.5rem;
+}
+
+.team-form__error {
+  color: var(--mat-sys-error);
+}
+
+.team-form__color {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.5rem 0;
+}
+
+.team-form__color-label {
+  font: var(--mat-sys-body-medium);
+}
+
+.team-form__color input[type='color'] {
+  width: 56px;
+  height: 36px;
+  padding: 0;
+  border: 1px solid var(--mat-sys-outline);
+  border-radius: 6px;
+  background: none;
+  cursor: pointer;
+}
+
+.team-form__color-value {
+  color: var(--mat-sys-on-surface-variant);
+  font: var(--mat-sys-body-small);
+}
+
+.team-form__save-error {
+  margin: 0.25rem 0 0;
+  color: var(--mat-sys-error);
+  font: var(--mat-sys-body-small);
+}
