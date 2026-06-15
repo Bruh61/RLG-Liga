@@ -135,6 +135,10 @@ Die API-Basis-URL liegt in `src/environments` (`http://localhost:3000`).
 
 > Neueste Einträge oben. Pro abgeschlossener Phase ein datierter Eintrag.
 
+### 2026-06-15 — chore: Sicherheits-Override esbuild
+
+- `esbuild` (≤0.28.0, transitiv über `@angular/build`/`vite`, nur Build-/Dev-Zeit) hatte 3 High-Advisories ohne Angular-Fix → via `overrides` auf `^0.28.1` gepinnt. `npm audit`: **0 vulnerabilities**; Build, 22 Tests und `ng serve` verifiziert. Entfernen, sobald `@angular/build` esbuild selbst anhebt.
+
 ### 2026-06-15 — Phase 7: Dashboard, Auth & Politur ✅
 
 - **`dashboard`**: KPI-Kacheln (Teams, Spieler, gespielte/offene Matches) + zwei **`@defer (on viewport)`**-Charts (Siege & gewonnene Spiele je Team) über eine abhängigkeitsfreie `bar-chart`-Komponente (SVG/CSS).
