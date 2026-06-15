@@ -1,0 +1,25 @@
+.player-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  min-width: min(440px, 78vw);
+  padding-top: 0.5rem;
+}
+
+.player-form__captain {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  padding: 0.25rem 0 0.5rem;
+}
+
+.player-form__error {
+  margin: 0;
+  color: var(--mat-sys-error);
+}
+
+.player-form__save-error {
+  margin: 0.25rem 0 0;
+  color: var(--mat-sys-error);
+  font: var(--mat-sys-body-small);
+}

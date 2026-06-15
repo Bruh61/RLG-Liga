@@ -1,0 +1,129 @@
+<app-page-header title="Spieler" subtitle="Verwalte Spieler und Team-Zuordnungen">
+  <button mat-flat-button (click)="openCreate()">
+    <mat-icon>add</mat-icon>
+    Neuer Spieler
+  </button>
+</app-page-header>
+
+@if (players.isLoading()) {
+  <div class="players__center"><mat-spinner diameter="40" /></div>
+} @else if (players.error()) {
+  <app-empty-state
+    icon="cloud_off"
+    message="Spieler konnten nicht geladen werden. Läuft die Mock-API (npm run api)?"
+  />
+} @else if (players.value().length === 0) {
+  <app-empty-state icon="person_off" message="Noch keine Spieler angelegt.">
+    <button mat-flat-button (click)="openCreate()">
+      <mat-icon>add</mat-icon>
+      Ersten Spieler anlegen
+    </button>
+  </app-empty-state>
+} @else {
+  <div class="players__filters">
+    <mat-form-field appearance="outline" subscriptSizing="dynamic">
+      <mat-label>Suchen</mat-label>
+      <input
+        matInput
+        #filterInput
+        [value]="textFilter()"
+        (input)="textFilter.set(filterInput.value)"
+        placeholder="Gamertag oder Name"
+      />
+      <mat-icon matSuffix>search</mat-icon>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" subscriptSizing="dynamic">
+      <mat-label>Team</mat-label>
+      <mat-select [value]="teamFilter()" (selectionChange)="teamFilter.set($event.value)">
+        <mat-option value="all">Alle Teams</mat-option>
+        <mat-option value="free">Free Agents</mat-option>
+        @for (team of teams.value(); track team.id) {
+          <mat-option [value]="team.id">{{ team.name }}</mat-option>
+        }
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" subscriptSizing="dynamic">
+      <mat-label>Plattform</mat-label>
+      <mat-select [value]="platformFilter()" (selectionChange)="platformFilter.set($event.value)">
+        <mat-option value="all">Alle Plattformen</mat-option>
+        @for (p of platforms; track p) {
+          <mat-option [value]="p">{{ platformLabels[p] }}</mat-option>
+        }
+      </mat-select>
+    </mat-form-field>
+  </div>
+
+  @if (dataSource.data.length === 0) {
+    <app-empty-state icon="filter_alt_off" message="Keine Spieler passen zu den Filtern." />
+  } @else {
+    <div class="players__table-wrap">
+      <table mat-table [dataSource]="dataSource" matSort>
+        <ng-container matColumnDef="gamertag">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Gamertag</th>
+          <td mat-cell *matCellDef="let player">{{ player.gamertag }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="realName">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Name</th>
+          <td mat-cell *matCellDef="let player">{{ player.realName || '—' }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="team">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Team</th>
+          <td mat-cell *matCellDef="let player">
+            @if (teamFor(player.teamId); as team) {
+              <app-team-badge [team]="team" [showName]="true" />
+            } @else {
+              <span class="players__free">Free Agent</span>
+            }
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="platform">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Plattform</th>
+          <td mat-cell *matCellDef="let player">{{ platformLabel(player.platform) }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="captain">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Captain</th>
+          <td mat-cell *matCellDef="let player">
+            @if (player.isCaptain) {
+              <mat-icon class="players__captain" matTooltip="Captain" aria-label="Captain">
+                military_tech
+              </mat-icon>
+            }
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="actions">
+          <th mat-header-cell *matHeaderCellDef></th>
+          <td mat-cell *matCellDef="let player" class="players__actions">
+            <button
+              mat-icon-button
+              (click)="openEdit(player)"
+              matTooltip="Bearbeiten"
+              aria-label="Spieler bearbeiten"
+            >
+              <mat-icon>edit</mat-icon>
+            </button>
+            <button
+              mat-icon-button
+              (click)="confirmDelete(player)"
+              matTooltip="Löschen"
+              aria-label="Spieler löschen"
+            >
+              <mat-icon>delete</mat-icon>
+            </button>
+          </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+      </table>
+
+      <mat-paginator [pageSizeOptions]="[5, 10, 25]" [pageSize]="10" showFirstLastButtons />
+    </div>
+  }
+}

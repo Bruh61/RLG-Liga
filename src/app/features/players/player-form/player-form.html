@@ -1,0 +1,65 @@
+<h2 mat-dialog-title>{{ title }}</h2>
+
+<form (submit)="$event.preventDefault(); save()">
+  <mat-dialog-content class="player-form">
+    <mat-form-field appearance="outline">
+      <mat-label>Gamertag</mat-label>
+      <input matInput [formField]="form.gamertag" autocomplete="off" />
+      @if (firstError(form.gamertag()); as err) {
+        <mat-hint class="player-form__error" role="alert">{{ err }}</mat-hint>
+      }
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Echter Name (optional)</mat-label>
+      <input matInput [formField]="form.realName" autocomplete="off" />
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Plattform</mat-label>
+      <mat-select [value]="model().platform" (selectionChange)="setPlatform($event.value)">
+        @for (p of platforms; track p.value) {
+          <mat-option [value]="p.value">{{ p.label }}</mat-option>
+        }
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Team</mat-label>
+      <mat-select [value]="model().teamId" (selectionChange)="setTeam($event.value)">
+        <mat-option [value]="null">Free Agent</mat-option>
+        @for (team of teams.value(); track team.id) {
+          <mat-option [value]="team.id">{{ team.name }}</mat-option>
+        }
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Beigetreten am</mat-label>
+      <input matInput type="date" [formField]="form.joinedAt" />
+      @if (firstError(form.joinedAt()); as err) {
+        <mat-hint class="player-form__error" role="alert">{{ err }}</mat-hint>
+      }
+    </mat-form-field>
+
+    <div class="player-form__captain">
+      <mat-checkbox [checked]="model().isCaptain" (change)="setCaptain($event.checked)">
+        Captain des Teams
+      </mat-checkbox>
+      @if (firstError(form.isCaptain()); as err) {
+        <p class="player-form__error" role="alert">{{ err }}</p>
+      }
+    </div>
+
+    @if (saveError(); as err) {
+      <p class="player-form__save-error" role="alert">{{ err }}</p>
+    }
+  </mat-dialog-content>
+
+  <mat-dialog-actions align="end">
+    <button mat-button type="button" [mat-dialog-close]="false">Abbrechen</button>
+    <button mat-flat-button type="submit" [disabled]="form().invalid() || saving()">
+      {{ isEdit ? 'Speichern' : 'Anlegen' }}
+    </button>
+  </mat-dialog-actions>
+</form>

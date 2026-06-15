@@ -18,3 +18,6 @@ export const PLATFORM_LABELS: Record<Platform, string> = {
   psn: 'PlayStation',
   xbox: 'Xbox',
 };
+
+/** The editable shape of a player (everything except the server-owned id). */
+export type PlayerInput = Omit<Player, 'id'>;

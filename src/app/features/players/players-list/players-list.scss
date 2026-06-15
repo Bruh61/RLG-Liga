@@ -1,0 +1,41 @@
+.players__center {
+  display: flex;
+  justify-content: center;
+  padding: 3rem;
+}
+
+.players__filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.players__filters mat-form-field {
+  flex: 1 1 180px;
+  max-width: 280px;
+}
+
+.players__table-wrap {
+  border: 1px solid var(--mat-sys-outline-variant);
+  border-radius: 12px;
+  overflow: hidden;
+  background: var(--mat-sys-surface-container-low);
+}
+
+table {
+  width: 100%;
+}
+
+.players__free {
+  color: var(--mat-sys-on-surface-variant);
+}
+
+.players__captain {
+  color: var(--mat-sys-tertiary);
+}
+
+.players__actions {
+  text-align: right;
+  white-space: nowrap;
+}
