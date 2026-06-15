@@ -2,7 +2,7 @@
 
 > Professionelle Web-App zum Verwalten einer Rocket-League-Liga — Teams, Spieler, Saisons, Matches, Tabelle, Playoff-Bracket und Dashboard. Gebaut mit modernem Angular 22.
 
-**Status:** 🟡 In Entwicklung · **Aktuelle Phase:** Phase 7 — Dashboard, Auth & Politur _(Phase 0–6 ✅ abgeschlossen)_
+**Status:** 🟢 MVP fertig — alle Phasen (0–7) abgeschlossen
 **Letztes Update:** 2026-06-15
 
 > 📌 **Diese Datei ist die lebende Doku des Projekts.** Sie wird nach jeder Build-Phase aktualisiert (Status, Roadmap-Checkboxen, Changelog). Wenn Code und Doku auseinanderlaufen, ist das ein Bug — beides synchron halten.
@@ -93,7 +93,7 @@ db.json        json-server Seed
 - [x] **Phase 4 — Saisons & Match-Planung:** Saisons-CRUD, Match-Schedule mit Signal Form.
 - [x] **Phase 5 — Ergebnisse & Tabelle:** Ergebnis-Dialog, `computed`-Standings, hervorgehobene Playoff-Plätze.
 - [x] **Phase 6 — Playoff-Bracket:** CDK Drag & Drop Seeding, Vorrücken der Gewinner.
-- [ ] **Phase 7 — Dashboard, Auth & Politur:** Kennzahlen + Charts (`@defer`), Auth-Flow (Guard/Interceptor), a11y, Empty-/Error-States.
+- [x] **Phase 7 — Dashboard, Auth & Politur:** Kennzahlen + Charts (`@defer`), Auth-Flow (Guard/Interceptor), a11y, Empty-/Error-States.
 
 ---
 
@@ -134,6 +134,14 @@ Die API-Basis-URL liegt in `src/environments` (`http://localhost:3000`).
 ## 8. Changelog
 
 > Neueste Einträge oben. Pro abgeschlossener Phase ein datierter Eintrag.
+
+### 2026-06-15 — Phase 7: Dashboard, Auth & Politur ✅
+
+- **`dashboard`**: KPI-Kacheln (Teams, Spieler, gespielte/offene Matches) + zwei **`@defer (on viewport)`**-Charts (Siege & gewonnene Spiele je Team) über eine abhängigkeitsfreie `bar-chart`-Komponente (SVG/CSS).
+- **Auth-Flow**: signal-basierter `AuthService` (Login/Logout, in `localStorage` persistiert), `authGuard` (`CanActivateFn`) schützt den Admin-Bereich (Teams/Spieler/Saisons/Matches/Playoffs) und leitet mit `returnUrl` auf die Login-Seite; öffentlich bleiben Dashboard & Tabelle.
+- **Interceptoren ausgebaut**: `authInterceptor` hängt den Bearer-Token an, `errorInterceptor` zeigt Fehler via `MatSnackBar`.
+- **Login-Seite** (Signal Forms) + Toolbar-Integration (Benutzername/Logout bzw. Anmelden). a11y: ARIA-Labels, `role="alert"`, durchgängige Lade-/Leer-/Fehlerzustände.
+- **22 Tests** (inkl. `AuthService`). Build/Lint grün.
 
 ### 2026-06-15 — Phase 6: Playoff-Bracket ✅
 

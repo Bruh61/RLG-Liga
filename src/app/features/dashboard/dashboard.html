@@ -1,0 +1,33 @@
+<app-page-header title="Dashboard" [subtitle]="'Aktive Saison: ' + activeSeasonName()" />
+
+<div class="dash__kpis">
+  @for (kpi of kpis(); track kpi.label) {
+    <div class="dash__kpi">
+      <mat-icon class="dash__kpi-icon">{{ kpi.icon }}</mat-icon>
+      <div class="dash__kpi-value">{{ kpi.value }}</div>
+      <div class="dash__kpi-label">{{ kpi.label }}</div>
+    </div>
+  }
+</div>
+
+<div class="dash__charts">
+  @defer (on viewport) {
+    <div class="dash__chart">
+      <app-bar-chart title="Siege je Team" [data]="winsChart()" />
+    </div>
+  } @placeholder {
+    <div class="dash__chart dash__chart--ph">Diagramm erscheint beim Scrollen…</div>
+  } @loading {
+    <div class="dash__chart dash__chart--ph"><mat-spinner diameter="32" /></div>
+  }
+
+  @defer (on viewport) {
+    <div class="dash__chart">
+      <app-bar-chart title="Gewonnene Spiele je Team" [data]="gamesWonChart()" />
+    </div>
+  } @placeholder {
+    <div class="dash__chart dash__chart--ph">Diagramm erscheint beim Scrollen…</div>
+  } @loading {
+    <div class="dash__chart dash__chart--ph"><mat-spinner diameter="32" /></div>
+  }
+</div>

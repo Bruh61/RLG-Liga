@@ -22,6 +22,19 @@
       }
       <span class="shell__title">RLG Liga</span>
       <span class="shell__spacer"></span>
+
+      @if (auth.isAuthenticated()) {
+        <span class="shell__user">{{ auth.user()?.name }}</span>
+        <button mat-icon-button aria-label="Abmelden" matTooltip="Abmelden" (click)="logout()">
+          <mat-icon>logout</mat-icon>
+        </button>
+      } @else {
+        <a mat-button routerLink="/login">
+          <mat-icon>login</mat-icon>
+          Anmelden
+        </a>
+      }
+
       <button
         mat-icon-button
         [attr.aria-label]="theme.isDark() ? 'Helles Theme aktivieren' : 'Dunkles Theme aktivieren'"
