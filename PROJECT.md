@@ -2,7 +2,7 @@
 
 > Professionelle Web-App zum Verwalten einer Rocket-League-Liga — Teams, Spieler, Saisons, Matches, Tabelle, Playoff-Bracket und Dashboard. Gebaut mit modernem Angular 22.
 
-**Status:** 🟡 In Entwicklung · **Aktuelle Phase:** Phase 1 — Layout & M3-Theme _(Phase 0 ✅ abgeschlossen)_
+**Status:** 🟡 In Entwicklung · **Aktuelle Phase:** Phase 2 — Teams _(Phase 0–1 ✅ abgeschlossen)_
 **Letztes Update:** 2026-06-15
 
 > 📌 **Diese Datei ist die lebende Doku des Projekts.** Sie wird nach jeder Build-Phase aktualisiert (Status, Roadmap-Checkboxen, Changelog). Wenn Code und Doku auseinanderlaufen, ist das ein Bug — beides synchron halten.
@@ -87,7 +87,7 @@ db.json        json-server Seed
 ## 5. Roadmap
 
 - [x] **Phase 0 — Setup & Fundament:** Projekt, Material/CDK, ESLint/Prettier/Vitest, json-server + Seed, `app.config`.
-- [ ] **Phase 1 — Layout & M3-Theme:** Shell (sidenav + toolbar), Lazy-Routen, Custom RLG-Theme (rot/schwarz, Dark Default).
+- [x] **Phase 1 — Layout & M3-Theme:** Shell (sidenav + toolbar), Lazy-Routen, Custom RLG-Theme (rot/schwarz, Dark Default).
 - [ ] **Phase 2 — Teams:** CRUD-Blaupause; `mat-table` (Sort/Filter/Pagination), Signal Form im Dialog, confirm-dialog, team-badge.
 - [ ] **Phase 3 — Spieler:** CRUD, Team-Zuordnung, Captain-Regel, Filter nach Team/Plattform.
 - [ ] **Phase 4 — Saisons & Match-Planung:** Saisons-CRUD, Match-Schedule mit Signal Form.
@@ -134,6 +134,15 @@ Die API-Basis-URL liegt in `src/environments` (`http://localhost:3000`).
 ## 8. Changelog
 
 > Neueste Einträge oben. Pro abgeschlossener Phase ein datierter Eintrag.
+
+### 2026-06-15 — Phase 1: Layout & M3-Theme ✅
+
+- **Custom RLG-Theme** (rot/schwarz): Palette via `ng generate @angular/material:theme-color` (primary `#D32F2F`, tertiary `#FFA000`) → `src/styles/_theme-colors.scss`; `src/styles/_theme.scss` mit `mat.theme()`, **Dark Mode als Default** + `.light-mode`-Override.
+- **App-Shell** (`layout/shell`): responsiver `mat-sidenav` (Overlay auf Handset via `BreakpointObserver`) + `mat-toolbar`, sticky; `layout/nav` als `mat-nav-list` mit aktivem Routen-Highlight.
+- **Theme-Toggle** in der Toolbar über signal-basierten `ThemeService` (Dark/Light, persistiert in `localStorage`, `body.light-mode`).
+- **Lazy-Routen** zu allen Features via `loadComponent` (eigene Chunks pro Feature) + Platzhalterseiten; Default-Redirect auf `/dashboard`, Wildcard-Fallback.
+- **Shared-Komponenten**: `page-header` (Titel/Subtitle + Actions-Slot) und `empty-state` (Icon + Message), durchgängig genutzt.
+- **Test-Setup**: `setupFiles` (`src/test-setup.ts`) polyfillt `matchMedia` für jsdom; Tests für `ThemeService`, `EmptyState`, App-Shell (4/4 grün).
 
 ### 2026-06-15 — Phase 0: Setup & Fundament ✅
 

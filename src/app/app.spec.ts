@@ -3,22 +3,16 @@ import { provideRouter } from '@angular/router';
 import { App } from './app';
 
 describe('App', () => {
-  beforeEach(async () => {
+  it('creates and renders the app shell with the brand title', async () => {
     await TestBed.configureTestingModule({
       imports: [App],
       providers: [provideRouter([])],
     }).compileComponents();
-  });
 
-  it('should create the app', () => {
-    const fixture = TestBed.createComponent(App);
-    expect(fixture.componentInstance).toBeTruthy();
-  });
-
-  it('renders the RLG Liga brand title', async () => {
     const fixture = TestBed.createComponent(App);
     await fixture.whenStable();
-    const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('h1')?.textContent).toContain('RLG Liga');
+
+    expect(fixture.componentInstance).toBeTruthy();
+    expect((fixture.nativeElement as HTMLElement).textContent).toContain('RLG Liga');
   });
 });

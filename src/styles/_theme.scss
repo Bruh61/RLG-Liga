@@ -1,0 +1,27 @@
+// RLG Liga — custom Material 3 theme.
+// Brand: kräftiges Rot (primary) + Amber-Akzent (tertiary) auf dunklen Anthrazit-Surfaces.
+// Dark Mode ist der Default; `.light-mode` am <body> schaltet auf das helle Schema um.
+@use '@angular/material' as mat;
+@use './theme-colors' as brand;
+
+html {
+  color-scheme: dark;
+
+  @include mat.theme(
+    (
+      color: (
+        primary: brand.$primary-palette,
+        tertiary: brand.$tertiary-palette,
+        theme-type: color-scheme,
+      ),
+      typography: Roboto,
+      density: 0,
+    )
+  );
+}
+
+// Manuelles helles Theme (Toggle in der Toolbar). `theme-type: color-scheme`
+// oben sorgt dafür, dass beide Token-Sätze via light-dark() emittiert werden.
+body.light-mode {
+  color-scheme: light;
+}

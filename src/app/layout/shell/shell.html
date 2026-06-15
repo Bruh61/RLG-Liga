@@ -1,0 +1,38 @@
+<mat-sidenav-container class="shell">
+  <mat-sidenav
+    #sidenav
+    class="shell__sidenav"
+    [mode]="isHandset() ? 'over' : 'side'"
+    [opened]="!isHandset()"
+    [fixedInViewport]="isHandset()"
+  >
+    <div class="shell__brand">
+      <span class="shell__brand-mark">RLG</span>
+      <span class="shell__brand-text">Liga</span>
+    </div>
+    <app-nav (navigated)="closeOnHandset(sidenav)" />
+  </mat-sidenav>
+
+  <mat-sidenav-content class="shell__content">
+    <mat-toolbar class="shell__toolbar">
+      @if (isHandset()) {
+        <button mat-icon-button aria-label="Navigation umschalten" (click)="sidenav.toggle()">
+          <mat-icon>menu</mat-icon>
+        </button>
+      }
+      <span class="shell__title">RLG Liga</span>
+      <span class="shell__spacer"></span>
+      <button
+        mat-icon-button
+        [attr.aria-label]="theme.isDark() ? 'Helles Theme aktivieren' : 'Dunkles Theme aktivieren'"
+        (click)="theme.toggle()"
+      >
+        <mat-icon>{{ theme.isDark() ? 'light_mode' : 'dark_mode' }}</mat-icon>
+      </button>
+    </mat-toolbar>
+
+    <main class="shell__main">
+      <router-outlet />
+    </main>
+  </mat-sidenav-content>
+</mat-sidenav-container>

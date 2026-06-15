@@ -1,0 +1,54 @@
+.shell {
+  height: 100dvh;
+}
+
+.shell__sidenav {
+  width: 248px;
+  border-right: 1px solid var(--mat-sys-outline-variant);
+  background: var(--mat-sys-surface-container);
+}
+
+.shell__brand {
+  display: flex;
+  align-items: baseline;
+  gap: 0.4rem;
+  padding: 1.25rem 1.5rem;
+}
+
+.shell__brand-mark {
+  font: var(--mat-sys-title-large);
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  color: var(--mat-sys-primary);
+}
+
+.shell__brand-text {
+  font: var(--mat-sys-title-large);
+  font-weight: 600;
+  color: var(--mat-sys-on-surface);
+}
+
+.shell__toolbar {
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  gap: 0.25rem;
+  background: var(--mat-sys-surface-container);
+  border-bottom: 1px solid var(--mat-sys-outline-variant);
+}
+
+.shell__title {
+  font: var(--mat-sys-title-medium);
+}
+
+.shell__spacer {
+  flex: 1 1 auto;
+}
+
+.shell__main {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1.5rem;
+  box-sizing: border-box;
+}

@@ -1,12 +1,9 @@
-import { Component, signal } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { Component } from '@angular/core';
+import { Shell } from './layout/shell/shell';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet],
-  templateUrl: './app.html',
-  styleUrl: './app.scss',
+  imports: [Shell],
+  template: '<app-shell />',
 })
-export class App {
-  protected readonly appName = signal('RLG Liga');
-}
+export class App {}
