@@ -1,0 +1,515 @@
+{
+  "teams": [
+    {
+      "id": "t1",
+      "name": "Berlin Boosters",
+      "tag": "BBO",
+      "colorPrimary": "#D32F2F",
+      "foundedAt": "2024-09-01"
+    },
+    {
+      "id": "t2",
+      "name": "München Mavericks",
+      "tag": "MUC",
+      "colorPrimary": "#1565C0",
+      "foundedAt": "2024-09-03"
+    },
+    {
+      "id": "t3",
+      "name": "Hamburg Hurricanes",
+      "tag": "HHU",
+      "colorPrimary": "#00897B",
+      "foundedAt": "2024-10-12"
+    },
+    {
+      "id": "t4",
+      "name": "Köln Cobras",
+      "tag": "KOC",
+      "colorPrimary": "#6A1B9A",
+      "foundedAt": "2024-11-05"
+    },
+    {
+      "id": "t5",
+      "name": "Frankfurt Flames",
+      "tag": "FFL",
+      "colorPrimary": "#EF6C00",
+      "foundedAt": "2025-01-20"
+    },
+    {
+      "id": "t6",
+      "name": "Dortmund Demolishers",
+      "tag": "DDE",
+      "colorPrimary": "#FBC02D",
+      "foundedAt": "2025-02-14"
+    }
+  ],
+  "players": [
+    {
+      "id": "p1",
+      "gamertag": "zwbleck",
+      "realName": "Jonas Weber",
+      "platform": "epic",
+      "teamId": "t1",
+      "isCaptain": true,
+      "joinedAt": "2024-09-01"
+    },
+    {
+      "id": "p2",
+      "gamertag": "Falke",
+      "realName": "Tim Hofmann",
+      "platform": "steam",
+      "teamId": "t1",
+      "isCaptain": false,
+      "joinedAt": "2024-09-10"
+    },
+    {
+      "id": "p3",
+      "gamertag": "Nova7",
+      "platform": "psn",
+      "teamId": "t1",
+      "isCaptain": false,
+      "joinedAt": "2024-10-02"
+    },
+    {
+      "id": "p4",
+      "gamertag": "KayZen",
+      "realName": "Lukas Brandt",
+      "platform": "epic",
+      "teamId": "t2",
+      "isCaptain": true,
+      "joinedAt": "2024-09-03"
+    },
+    {
+      "id": "p5",
+      "gamertag": "Vatos",
+      "platform": "steam",
+      "teamId": "t2",
+      "isCaptain": false,
+      "joinedAt": "2024-09-15"
+    },
+    {
+      "id": "p6",
+      "gamertag": "RapidR6",
+      "realName": "Marco Klein",
+      "platform": "xbox",
+      "teamId": "t2",
+      "isCaptain": false,
+      "joinedAt": "2024-11-01"
+    },
+    {
+      "id": "p7",
+      "gamertag": "Joreez",
+      "realName": "Niklas Fischer",
+      "platform": "epic",
+      "teamId": "t3",
+      "isCaptain": true,
+      "joinedAt": "2024-10-12"
+    },
+    {
+      "id": "p8",
+      "gamertag": "Seeker",
+      "platform": "psn",
+      "teamId": "t3",
+      "isCaptain": false,
+      "joinedAt": "2024-10-20"
+    },
+    {
+      "id": "p9",
+      "gamertag": "Tide",
+      "realName": "Erik Schulz",
+      "platform": "steam",
+      "teamId": "t3",
+      "isCaptain": false,
+      "joinedAt": "2024-12-05"
+    },
+    {
+      "id": "p10",
+      "gamertag": "Vortex",
+      "realName": "Paul Wagner",
+      "platform": "epic",
+      "teamId": "t4",
+      "isCaptain": true,
+      "joinedAt": "2024-11-05"
+    },
+    {
+      "id": "p11",
+      "gamertag": "CobraK",
+      "platform": "steam",
+      "teamId": "t4",
+      "isCaptain": false,
+      "joinedAt": "2024-11-18"
+    },
+    {
+      "id": "p12",
+      "gamertag": "Hiss",
+      "realName": "Ben Maier",
+      "platform": "psn",
+      "teamId": "t4",
+      "isCaptain": false,
+      "joinedAt": "2025-01-09"
+    },
+    {
+      "id": "p13",
+      "gamertag": "Blaze",
+      "realName": "David Köhler",
+      "platform": "epic",
+      "teamId": "t5",
+      "isCaptain": true,
+      "joinedAt": "2025-01-20"
+    },
+    {
+      "id": "p14",
+      "gamertag": "Ember",
+      "platform": "xbox",
+      "teamId": "t5",
+      "isCaptain": false,
+      "joinedAt": "2025-02-01"
+    },
+    {
+      "id": "p15",
+      "gamertag": "Pyro",
+      "realName": "Felix Braun",
+      "platform": "steam",
+      "teamId": "t5",
+      "isCaptain": false,
+      "joinedAt": "2025-03-12"
+    },
+    {
+      "id": "p16",
+      "gamertag": "Wrecker",
+      "realName": "Leon Vogel",
+      "platform": "epic",
+      "teamId": "t6",
+      "isCaptain": true,
+      "joinedAt": "2025-02-14"
+    },
+    {
+      "id": "p17",
+      "gamertag": "Crush",
+      "platform": "psn",
+      "teamId": "t6",
+      "isCaptain": false,
+      "joinedAt": "2025-02-25"
+    },
+    {
+      "id": "p18",
+      "gamertag": "Boom",
+      "realName": "Max Richter",
+      "platform": "steam",
+      "teamId": "t6",
+      "isCaptain": false,
+      "joinedAt": "2025-04-03"
+    }
+  ],
+  "seasons": [
+    {
+      "id": "s1",
+      "name": "Season 1 — Frühjahr 2026",
+      "startDate": "2026-02-01",
+      "endDate": "2026-04-30",
+      "status": "finished",
+      "format": "round-robin-playoffs"
+    },
+    {
+      "id": "s2",
+      "name": "Season 2 — Sommer 2026",
+      "startDate": "2026-05-15",
+      "endDate": "2026-08-15",
+      "status": "active",
+      "format": "round-robin-playoffs"
+    }
+  ],
+  "matches": [
+    {
+      "id": "m1",
+      "seasonId": "s2",
+      "homeTeamId": "t1",
+      "awayTeamId": "t2",
+      "scheduledAt": "2026-05-16T18:00:00",
+      "status": "finished",
+      "stage": "regular",
+      "bestOf": 5,
+      "homeScore": 3,
+      "awayScore": 1
+    },
+    {
+      "id": "m2",
+      "seasonId": "s2",
+      "homeTeamId": "t3",
+      "awayTeamId": "t4",
+      "scheduledAt": "2026-05-18T18:00:00",
+      "status": "finished",
+      "stage": "regular",
+      "bestOf": 5,
+      "homeScore": 3,
+      "awayScore": 2
+    },
+    {
+      "id": "m3",
+      "seasonId": "s2",
+      "homeTeamId": "t5",
+      "awayTeamId": "t6",
+      "scheduledAt": "2026-05-20T18:00:00",
+      "status": "finished",
+      "stage": "regular",
+      "bestOf": 5,
+      "homeScore": 1,
+      "awayScore": 3
+    },
+    {
+      "id": "m4",
+      "seasonId": "s2",
+      "homeTeamId": "t1",
+      "awayTeamId": "t3",
+      "scheduledAt": "2026-05-23T18:00:00",
+      "status": "finished",
+      "stage": "regular",
+      "bestOf": 5,
+      "homeScore": 3,
+      "awayScore": 0
+    },
+    {
+      "id": "m5",
+      "seasonId": "s2",
+      "homeTeamId": "t2",
+      "awayTeamId": "t5",
+      "scheduledAt": "2026-05-25T18:00:00",
+      "status": "finished",
+      "stage": "regular",
+      "bestOf": 5,
+      "homeScore": 3,
+      "awayScore": 2
+    },
+    {
+      "id": "m6",
+      "seasonId": "s2",
+      "homeTeamId": "t4",
+      "awayTeamId": "t6",
+      "scheduledAt": "2026-05-28T18:00:00",
+      "status": "finished",
+      "stage": "regular",
+      "bestOf": 5,
+      "homeScore": 2,
+      "awayScore": 3
+    },
+    {
+      "id": "m7",
+      "seasonId": "s2",
+      "homeTeamId": "t1",
+      "awayTeamId": "t4",
+      "scheduledAt": "2026-06-01T18:00:00",
+      "status": "finished",
+      "stage": "regular",
+      "bestOf": 5,
+      "homeScore": 3,
+      "awayScore": 1
+    },
+    {
+      "id": "m8",
+      "seasonId": "s2",
+      "homeTeamId": "t3",
+      "awayTeamId": "t5",
+      "scheduledAt": "2026-06-04T18:00:00",
+      "status": "finished",
+      "stage": "regular",
+      "bestOf": 5,
+      "homeScore": 3,
+      "awayScore": 1
+    },
+    {
+      "id": "m9",
+      "seasonId": "s2",
+      "homeTeamId": "t2",
+      "awayTeamId": "t6",
+      "scheduledAt": "2026-06-08T18:00:00",
+      "status": "finished",
+      "stage": "regular",
+      "bestOf": 5,
+      "homeScore": 0,
+      "awayScore": 3
+    },
+    {
+      "id": "m10",
+      "seasonId": "s2",
+      "homeTeamId": "t1",
+      "awayTeamId": "t5",
+      "scheduledAt": "2026-06-20T18:00:00",
+      "status": "scheduled",
+      "stage": "regular",
+      "bestOf": 5,
+      "homeScore": 0,
+      "awayScore": 0
+    },
+    {
+      "id": "m11",
+      "seasonId": "s2",
+      "homeTeamId": "t2",
+      "awayTeamId": "t3",
+      "scheduledAt": "2026-06-22T18:00:00",
+      "status": "scheduled",
+      "stage": "regular",
+      "bestOf": 5,
+      "homeScore": 0,
+      "awayScore": 0
+    },
+    {
+      "id": "m12",
+      "seasonId": "s2",
+      "homeTeamId": "t4",
+      "awayTeamId": "t5",
+      "scheduledAt": "2026-06-25T18:00:00",
+      "status": "scheduled",
+      "stage": "regular",
+      "bestOf": 5,
+      "homeScore": 0,
+      "awayScore": 0
+    },
+    {
+      "id": "m13",
+      "seasonId": "s2",
+      "homeTeamId": "t6",
+      "awayTeamId": "t1",
+      "scheduledAt": "2026-06-28T18:00:00",
+      "status": "scheduled",
+      "stage": "regular",
+      "bestOf": 5,
+      "homeScore": 0,
+      "awayScore": 0
+    },
+    {
+      "id": "m14",
+      "seasonId": "s2",
+      "homeTeamId": "t2",
+      "awayTeamId": "t4",
+      "scheduledAt": "2026-07-02T18:00:00",
+      "status": "scheduled",
+      "stage": "regular",
+      "bestOf": 5,
+      "homeScore": 0,
+      "awayScore": 0
+    },
+    {
+      "id": "m15",
+      "seasonId": "s2",
+      "homeTeamId": "t3",
+      "awayTeamId": "t6",
+      "scheduledAt": "2026-07-05T18:00:00",
+      "status": "scheduled",
+      "stage": "regular",
+      "bestOf": 5,
+      "homeScore": 0,
+      "awayScore": 0
+    },
+    {
+      "id": "m16",
+      "seasonId": "s1",
+      "homeTeamId": "t1",
+      "awayTeamId": "t2",
+      "scheduledAt": "2026-02-10T18:00:00",
+      "status": "finished",
+      "stage": "regular",
+      "bestOf": 5,
+      "homeScore": 3,
+      "awayScore": 2
+    },
+    {
+      "id": "m17",
+      "seasonId": "s1",
+      "homeTeamId": "t3",
+      "awayTeamId": "t4",
+      "scheduledAt": "2026-02-12T18:00:00",
+      "status": "finished",
+      "stage": "regular",
+      "bestOf": 5,
+      "homeScore": 3,
+      "awayScore": 1
+    },
+    {
+      "id": "m18",
+      "seasonId": "s1",
+      "homeTeamId": "t5",
+      "awayTeamId": "t6",
+      "scheduledAt": "2026-02-15T18:00:00",
+      "status": "finished",
+      "stage": "regular",
+      "bestOf": 5,
+      "homeScore": 3,
+      "awayScore": 0
+    },
+    {
+      "id": "m19",
+      "seasonId": "s1",
+      "homeTeamId": "t2",
+      "awayTeamId": "t3",
+      "scheduledAt": "2026-02-20T18:00:00",
+      "status": "finished",
+      "stage": "regular",
+      "bestOf": 5,
+      "homeScore": 3,
+      "awayScore": 2
+    },
+    {
+      "id": "m20",
+      "seasonId": "s1",
+      "homeTeamId": "t4",
+      "awayTeamId": "t5",
+      "scheduledAt": "2026-02-22T18:00:00",
+      "status": "finished",
+      "stage": "regular",
+      "bestOf": 5,
+      "homeScore": 1,
+      "awayScore": 3
+    },
+    {
+      "id": "m21",
+      "seasonId": "s1",
+      "homeTeamId": "t6",
+      "awayTeamId": "t1",
+      "scheduledAt": "2026-02-25T18:00:00",
+      "status": "finished",
+      "stage": "regular",
+      "bestOf": 5,
+      "homeScore": 2,
+      "awayScore": 3
+    },
+    {
+      "id": "m22",
+      "seasonId": "s1",
+      "homeTeamId": "t1",
+      "awayTeamId": "t3",
+      "scheduledAt": "2026-04-10T19:00:00",
+      "status": "finished",
+      "stage": "playoff",
+      "bestOf": 7,
+      "homeScore": 4,
+      "awayScore": 2,
+      "round": 1
+    },
+    {
+      "id": "m23",
+      "seasonId": "s1",
+      "homeTeamId": "t5",
+      "awayTeamId": "t2",
+      "scheduledAt": "2026-04-12T19:00:00",
+      "status": "finished",
+      "stage": "playoff",
+      "bestOf": 7,
+      "homeScore": 4,
+      "awayScore": 3,
+      "round": 1
+    },
+    {
+      "id": "m24",
+      "seasonId": "s1",
+      "homeTeamId": "t1",
+      "awayTeamId": "t5",
+      "scheduledAt": "2026-04-25T19:00:00",
+      "status": "finished",
+      "stage": "playoff",
+      "bestOf": 7,
+      "homeScore": 4,
+      "awayScore": 1,
+      "round": 2
+    }
+  ]
+}
